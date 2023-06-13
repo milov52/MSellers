@@ -5,8 +5,7 @@ from backend.app.config import settings
 from backend.app.user.utils import create_first_superuser
 
 app = FastAPI(
-    title=settings.app_title,
-    description=settings.app_description
+    title=settings.app_title
 )
 
 app.include_router(main_router)

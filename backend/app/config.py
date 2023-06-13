@@ -20,13 +20,7 @@ class Settings(BaseSettings):
         prefix = 'postgresql+asyncpg://'
         user = f"{self.DB_USER}:{self.DB_PASS}"
         database = f"{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
-        return prefix + user + "@" + database
-
-    @property
-    def test_database_url(self):
-        prefix = 'postgresql+asyncpg://'
-        user = f"{self.DB_USER}:{self.DB_PASS}"
-        database = f"{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
+        print(prefix + user + "@" + database)
         return prefix + user + "@" + database
 
     class Config:

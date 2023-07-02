@@ -1,8 +1,8 @@
 from http import HTTPStatus
 from fastapi import APIRouter, HTTPException
 
-from backend.app.user.service import auth_backend, fastapi_users
-from backend.app.user.schemas import UserCreate, UserRead, UserUpdate
+from app.core.user import auth_backend, fastapi_users
+from app.schemas.user import UserCreate, UserRead, UserUpdate
 
 router = APIRouter()
 

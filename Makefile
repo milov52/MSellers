@@ -2,4 +2,4 @@ up:
 	docker compose -f docker-compose-dev.yml up -d --build
 
 down:
-	docker compose -f docker-compose-dev.yml down && docker network prune --force
+	docker compose -f docker-compose-dev.yml down

@@ -1,19 +1,20 @@
 version: '3.8'
 
 services:
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    volumes:
-      - ./backend/:/backend/
-    command: uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000
-    env_file:
-      - ./backend/.env
-    ports:
-      - 8000:8000
-    networks:
-      - custom
+#  backend:
+#    container_name: "backend"
+#    restart: always
+#    build:
+#      context: ./backend
+#      dockerfile: Dockerfile
+#    volumes:
+#      - ./backend/:/backend/
+#    command: uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000
+#    env_file:
+#      - ./backend/.env
+#    ports:
+#      - 8000:8000
+
 
   db:
     container_name: "db"
@@ -21,14 +22,11 @@ services:
     volumes:
       - postgres_data:/var/lib/postresql/data/
     restart: always
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=mseller
+    env_file:
+      - ./backend/.env
     ports:
       - "5433:5432"
-    networks:
-      - custom
+
 
 #  db_test:
 #    container_name: "db_test"
@@ -46,6 +44,6 @@ services:
 volumes:
   postgres_data:
 
-networks:
-  custom:
-    driver: bridge
+#networks:
+#  custom:
+#    driver: bridge

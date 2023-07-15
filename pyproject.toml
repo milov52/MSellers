@@ -1,0 +1,54 @@
+[tool.poetry]
+name = "msellers"
+version = "0.1.0"
+description = ""
+authors = ["Milov Aleksey <milov52@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+alembic = "^1.11.1"
+asyncpg = "^0.28.0"
+fastapi = "^0.100.0"
+fastapi-users = {extras = ["sqlalchemy"], version = "^12.1.0"}
+uvicorn = {extras = ["standard"], version = "^0.23.0"}
+python-dotenv = "^1.0.0"
+pydantic = "^2.0.3"
+greenlet = "^2.0.2"
+email-validator = "^2.0.0.post2"
+sqlalchemy = "^2.0.19"
+pydantic-settings = "^2.0.2"
+celery = {extras = ["redis"], version = "^5.3.1"}
+
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^6.0.0"
+black = "^23.7.0"
+isort = "^5.12.0"
+pre-commit = "^3.3.3"
+
+[tool.black]
+line-length = 79
+include = '.pyi?$'
+exclude = '''
+/(
+    .git
+    | .hg
+    | .mypy_cache
+    | .tox
+    | .venv
+    | _build
+    | buck-out
+    | build
+    | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 79
+src_paths = ["backend", "backend/app"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

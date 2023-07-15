@@ -1,16 +1,16 @@
 import logging
-
-
-from pydantic_settings import BaseSettings
-from pydantic import EmailStr
 from typing import Optional
+
+from pydantic import EmailStr
+from pydantic_settings import BaseSettings
 
 log = logging.getLogger("uvicorn")
 
+
 class Settings(BaseSettings):
-    app_title: str = 'Управление продажами в маркетплейсках'
-    version: str = '1.0.0'
-    secret: str = 'SECRET'
+    app_title: str = "Управление продажами в маркетплейсках"
+    version: str = "1.0.0"
+    secret: str = "SECRET"
 
     POSTGRES_SERVER: str
     POSTGRES_PORT: int
@@ -24,13 +24,13 @@ class Settings(BaseSettings):
 
     @property
     def database_url(self):
-        prefix = 'postgresql+asyncpg://'
+        prefix = "postgresql+asyncpg://"
         user = f"{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}"
         database = f"{self.POSTGRES_SERVER}:{self.DB_PORT}/{self.POSTGRES_DB}"
         return prefix + user + "@" + database
 
     class Config:
-        env_file = '.env'
+        env_file = ".env"
 
 
 settings = Settings()

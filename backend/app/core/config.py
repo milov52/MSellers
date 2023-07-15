@@ -1,8 +1,9 @@
 import logging
 
-from typing import Optional
 
-from pydantic import BaseSettings, EmailStr
+from pydantic_settings import BaseSettings
+from pydantic import EmailStr
+from typing import Optional
 
 log = logging.getLogger("uvicorn")
 
@@ -10,6 +11,7 @@ class Settings(BaseSettings):
     app_title: str = 'Управление продажами в маркетплейсках'
     version: str = '1.0.0'
     secret: str = 'SECRET'
+
     POSTGRES_SERVER: str
     POSTGRES_PORT: int
     DB_PORT: int

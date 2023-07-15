@@ -27,6 +27,28 @@ services:
     ports:
       - "5433:5432"
 
+  worker:
+    build:
+      dockerfile: DockerfileCelery
+      context: .
+    environment:
+      REDISSERVER: redis://redis_server:6379
+      C_FORCE_ROOT: "true"
+    depends_on:
+      - redis_server
+
+  redis_server:
+    image: redis
+    container_name: redis_server
+#
+#  flower:
+#    image: mher/flower
+#    command: ["flower", "--broker=redis://redis_server:6379", "--port=5555"]
+#    ports:
+#      - "5555:5555"
+#    depends_on:
+#      - redis_server
+
 
 #  db_test:
 #    container_name: "db_test"
